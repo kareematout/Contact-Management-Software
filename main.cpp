@@ -1,6 +1,7 @@
-#include<iostream>
-#include<fstream>
-#include<cstdio>
+#include <iostream>
+#include <fstream>
+#include <cstdio>
+#include <string>
 #include "SinglyLinkedList.h"
 
 using namespace std;
