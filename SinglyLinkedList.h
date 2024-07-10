@@ -27,9 +27,8 @@ public:
     Contacts& removeContact(int);
     int findContact(Contacts) const;
     Contacts getContact(int) const;
-    void printList() const;
+    void printList();
     bool isListEmpty() const {return (start == nullptr);}
-    int Count() const {return count;}
     void replaceContact(Contacts oldContact, Contacts newContact);
 };
 
@@ -62,6 +61,7 @@ void SinglyLinkedList::insertContact(Contacts& dataIn)
     if (start == nullptr) {
         start = newNode;
         end = newNode;
+        count++;
         return;
     }
     pPre = start;
@@ -119,10 +119,13 @@ Contacts& SinglyLinkedList::removeContact(Contacts obj) {
 
 Contacts& SinglyLinkedList::removeContact(int index) {
     Contacts* removedData;
-    if (start == nullptr || index < 0 || index > count) throw "Invalid.";
+    if (start == nullptr || index < 0 || index >= count) throw "Invalid.";
+
     if (index == 0) {
         removedData = start->data;
+        LinkNode *deleteNode = start;
         start = start->next;
+        delete deleteNode;
         if (start == nullptr) {
             end = nullptr;
         }
@@ -165,7 +168,7 @@ int SinglyLinkedList::findContact(Contacts obj) const {
 
 
 Contacts SinglyLinkedList::getContact(int index) const {
-    if (index < 0 || index > count) throw "Invalid";
+    if (index < 0 || index >= count) throw "Invalid";
     LinkNode *pCur = start;
     for (int i = 0; i < index; i++) {
         pCur = pCur->next;
@@ -175,7 +178,7 @@ Contacts SinglyLinkedList::getContact(int index) const {
 }
 
 
-void SinglyLinkedList::printList() const {
+void SinglyLinkedList::printList()  {
     LinkNode *pCur = start;
     int i = 1;
     while (pCur) {

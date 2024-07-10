@@ -73,15 +73,17 @@ int main() {
    int input;
    cout << endl;
 
-   cout << "================================================================================\n"
-        << "Options:\n"
-        << "1. Show contacts list\n"
-        << "2. Add new contact\n"
-        << "3. Remove a contact\n"
-        << "4. View a contact's information\n"
-        << "5. Edit a contact's information\n"
-        << "6. Quit Program\n"
-        << "================================================================================\n";
+   string programOptions = "================================================================================\n"
+                           "Options:\n"
+                           "1. Show contacts list\n"
+                           "2. Add new contact\n"
+                           "3. Remove a contact\n"
+                           "4. View a contact's information\n"
+                           "5. Edit a contact's information\n"
+                           "6. Quit Program\n"
+                           "================================================================================\n";
+
+   cout << programOptions;
    cout << "Option: ";
    cin >> input;
 
@@ -138,15 +140,7 @@ int main() {
       }
 
       cout << endl;
-      cout << "================================================================================\n"
-           << "Options:\n"
-           << "1. Show contacts list\n"
-           << "2. Add new contact\n"
-           << "3. Remove a contact\n"
-           << "4. View a contact's information\n"
-           << "5. Edit a contact's information\n"
-           << "6. Quit Program\n"
-           << "================================================================================\n";
+      cout << programOptions;
       cout << "Option: ";
       cin >> input;
       
@@ -302,17 +296,20 @@ void PrintContactInfo(SinglyLinkedList &list, int num) {
 }
 
 void EditContact(SinglyLinkedList &list, int num) {
-   Contacts contact = list.getContact(num - 1);
+   Contacts contact = list.getContact(num-1);
    Contacts oldContact = contact;
    int option = 0;
    string edit = "";
 
-   cout << "What would you life to edit?\n"
-        << "1. Name\n"
-        << "2. Phone Number\n"
-        << "3. Email\n"
-        << "4. Address\n"
-        << "5. Go Back\n";
+   string contactOptions = 
+   "What would you life to edit?\n"
+    "1. Name\n"
+    "2. Phone Number\n"
+    "3. Email\n"
+    "4. Address\n"
+    "5. Quit editing\n";
+
+   cout << contactOptions;
    cout << "Option: ";
    cin >> option;
 
@@ -359,19 +356,29 @@ void EditContact(SinglyLinkedList &list, int num) {
 
       }
 
-      cout << "\nWhat else would you life to edit?\n"
-           << "1. Name\n"
-           << "2. Phone Number\n"
-           << "3. Email\n"
-           << "4. Address\n"
-           << "5. Done editing\n";
+      cout << contactOptions;
       cout << "Option: ";
       cin >> option;
    }
 
+   RemoveContact(list, num);
+   CreateNewContact(list, contact);
+   //RemoveContact(list, num);
+   //CreateNewContact(list, contact);
+   //UpdateFileInfo(num, contact, list);
+   /*list.replaceContact(oldContact, contact);
 
-   list.replaceContact(oldContact, contact);
-   UpdateFileInfo(num, contact, list);
+   string fileName = oldContact.getName() + ".txt";
+   if (remove(fileName.c_str()) != 0) { 
+      cerr << "Error deleting file\n";
+   }
+
+   if(deleteStringFromFile(contact.getName())) {
+      return;
+   }
+   else {
+      cerr << "Error.";
+   }*/
 }
 
 void UpdateFileInfo(int num, Contacts contact, SinglyLinkedList &list) {
