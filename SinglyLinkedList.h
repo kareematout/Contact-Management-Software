@@ -183,7 +183,7 @@ void SinglyLinkedList::printList()  {
     int i = 1;
     while (pCur) {
 
-        cout << "   "  << i << ". " << pCur->data->getName() << endl;
+        cout << "   " << i << ". " << pCur->data->getName() << endl;
         
         i++;
         pCur = pCur->next;

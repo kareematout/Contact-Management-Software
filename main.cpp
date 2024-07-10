@@ -363,25 +363,4 @@ void EditContact(SinglyLinkedList &list, int num) {
 
    RemoveContact(list, num);
    CreateNewContact(list, contact);
-   //RemoveContact(list, num);
-   //CreateNewContact(list, contact);
-   //UpdateFileInfo(num, contact, list);
-   /*list.replaceContact(oldContact, contact);
-
-   string fileName = oldContact.getName() + ".txt";
-   if (remove(fileName.c_str()) != 0) { 
-      cerr << "Error deleting file\n";
-   }
-
-   if(deleteStringFromFile(contact.getName())) {
-      return;
-   }
-   else {
-      cerr << "Error.";
-   }*/
-}
-
-void UpdateFileInfo(int num, Contacts contact, SinglyLinkedList &list) {
-   RemoveContact(list, num);
-   CreateNewContact(list, contact);
 }

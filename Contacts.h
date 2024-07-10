@@ -33,8 +33,8 @@ string Contacts::formatPhoneNumber(string& phoneNumber) {
         return phoneNumber;
     }
 
-    // Format the phone number as (XXX) XXX-XXXX
-    return "(" + phoneNumber.substr(0, 3) + ") " + phoneNumber.substr(3, 3) + "-" + phoneNumber.substr(6);
+    // Format the phone number as (XXX)XXX-XXXX
+    return "(" + phoneNumber.substr(0, 3) + ")" + phoneNumber.substr(3, 3) + "-" + phoneNumber.substr(6);
 }
 
 
